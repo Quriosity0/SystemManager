@@ -1,8 +1,8 @@
 namespace CSharpFinalProject
 {
-    public partial class Form1 : Form
+    public partial class sysman : Form
     {
-        public Form1()
+        public sysman()
         {
             InitializeComponent();
         }
