@@ -16,5 +16,11 @@ namespace CSharpFinalProject
         {
             Process.Start("explorer.exe", "shell:::{2559a1f3-21d7-11d4-bdaf-00c04f60b9f0}");
         }
+
+        private void killToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ProcKill form = new ProcKill();
+            form.Show();
+        }
     }
 }

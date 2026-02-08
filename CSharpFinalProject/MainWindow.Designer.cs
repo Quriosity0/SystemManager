@@ -73,6 +73,7 @@
             killToolStripMenuItem.Name = "killToolStripMenuItem";
             killToolStripMenuItem.Size = new Size(180, 22);
             killToolStripMenuItem.Text = "Kill";
+            killToolStripMenuItem.Click += killToolStripMenuItem_Click;
             // 
             // exitToolStripMenuItem
             // 
@@ -90,7 +91,7 @@
             // aboutToolStripMenuItem
             // 
             aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            aboutToolStripMenuItem.Size = new Size(180, 22);
+            aboutToolStripMenuItem.Size = new Size(107, 22);
             aboutToolStripMenuItem.Text = "About";
             // 
             // sysman
