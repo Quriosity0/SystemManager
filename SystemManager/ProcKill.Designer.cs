@@ -66,11 +66,11 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(12, 75);
+            label2.Location = new Point(6, 75);
             label2.Name = "label2";
-            label2.Size = new Size(42, 15);
+            label2.Size = new Size(26, 15);
             label2.TabIndex = 4;
-            label2.Text = "Name:";
+            label2.Text = "Kill:";
             // 
             // OKBtn
             // 
@@ -84,12 +84,12 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = Properties.Resources.prockill;
-            pictureBox1.Location = new Point(2, 12);
+            pictureBox1.Image = SystemManager.Properties.Resources.prockill;
+            pictureBox1.Location = new Point(-1, 6);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(57, 54);
+            pictureBox1.Size = new Size(60, 60);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 6;
+            pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
             // ProcKill
