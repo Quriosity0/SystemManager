@@ -34,6 +34,7 @@
             GHLink = new LinkLabel();
             label2 = new Label();
             label3 = new Label();
+            label4 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -61,7 +62,7 @@
             // 
             GHLink.AutoSize = true;
             GHLink.Font = new Font("Yu Gothic UI", 9F);
-            GHLink.Location = new Point(297, 178);
+            GHLink.Location = new Point(310, 120);
             GHLink.Name = "GHLink";
             GHLink.Size = new Size(72, 15);
             GHLink.TabIndex = 2;
@@ -73,11 +74,11 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Yu Gothic UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(12, 212);
+            label2.Location = new Point(91, 67);
             label2.Name = "label2";
-            label2.Size = new Size(256, 15);
+            label2.Size = new Size(260, 15);
             label2.TabIndex = 3;
-            label2.Text = "Designed to help you control your PC with ease";
+            label2.Text = "Designed to help you manage your PC with ease";
             // 
             // label3
             // 
@@ -89,11 +90,22 @@
             label3.TabIndex = 4;
             label3.Text = "Version 0.1";
             // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Yu Gothic UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label4.Location = new Point(5, 120);
+            label4.Name = "label4";
+            label4.Size = new Size(205, 15);
+            label4.TabIndex = 5;
+            label4.Text = "Created by Quriosity (Kirill Pozhidaev)";
+            // 
             // About
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(384, 236);
+            ClientSize = new Size(384, 142);
+            Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(GHLink);
@@ -101,6 +113,8 @@
             Controls.Add(pictureBox1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "About";
             Text = "About";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -115,5 +129,6 @@
         private LinkLabel GHLink;
         private Label label2;
         private Label label3;
+        private Label label4;
     }
 }
