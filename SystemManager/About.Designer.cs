@@ -31,14 +31,16 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(About));
             pictureBox1 = new PictureBox();
             label1 = new Label();
-            linkLabel1 = new LinkLabel();
+            GHLink = new LinkLabel();
+            label2 = new Label();
+            label3 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // pictureBox1
             // 
             pictureBox1.Image = SystemManager.Properties.Resources.sysmon;
-            pictureBox1.Location = new Point(149, 12);
+            pictureBox1.Location = new Point(12, 12);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(70, 70);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -49,28 +51,52 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(113, 89);
+            label1.Location = new Point(88, 12);
             label1.Name = "label1";
             label1.Size = new Size(154, 25);
             label1.TabIndex = 1;
             label1.Text = "System Monitor";
             // 
-            // linkLabel1
+            // GHLink
             // 
-            linkLabel1.AutoSize = true;
-            linkLabel1.Location = new Point(297, 178);
-            linkLabel1.Name = "linkLabel1";
-            linkLabel1.Size = new Size(60, 15);
-            linkLabel1.TabIndex = 2;
-            linkLabel1.TabStop = true;
-            linkLabel1.Text = "linkLabel1";
+            GHLink.AutoSize = true;
+            GHLink.Font = new Font("Yu Gothic UI", 9F);
+            GHLink.Location = new Point(297, 178);
+            GHLink.Name = "GHLink";
+            GHLink.Size = new Size(72, 15);
+            GHLink.TabIndex = 2;
+            GHLink.TabStop = true;
+            GHLink.Text = "Github page";
+            GHLink.LinkClicked += GHLink_LinkClicked;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Yu Gothic UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.Location = new Point(12, 212);
+            label2.Name = "label2";
+            label2.Size = new Size(256, 15);
+            label2.TabIndex = 3;
+            label2.Text = "Designed to help you control your PC with ease";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Yu Gothic UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label3.Location = new Point(91, 37);
+            label3.Name = "label3";
+            label3.Size = new Size(63, 15);
+            label3.TabIndex = 4;
+            label3.Text = "Version 0.1";
             // 
             // About
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(384, 236);
-            Controls.Add(linkLabel1);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(GHLink);
             Controls.Add(label1);
             Controls.Add(pictureBox1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
@@ -86,6 +112,8 @@
 
         private PictureBox pictureBox1;
         private Label label1;
-        private LinkLabel linkLabel1;
+        private LinkLabel GHLink;
+        private Label label2;
+        private Label label3;
     }
 }

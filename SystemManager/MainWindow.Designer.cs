@@ -40,7 +40,11 @@
             helpToolStripMenuItem = new ToolStripMenuItem();
             aboutToolStripMenuItem = new ToolStripMenuItem();
             killBtn = new Button();
-            listView1 = new ListView();
+            ProcList = new ListView();
+            ProcName = new ColumnHeader();
+            PID = new ColumnHeader();
+            Mem = new ColumnHeader();
+            Threads = new ColumnHeader();
             contextMenuStrip1.SuspendLayout();
             menuStrip1.SuspendLayout();
             SuspendLayout();
@@ -104,7 +108,7 @@
             // aboutToolStripMenuItem
             // 
             aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            aboutToolStripMenuItem.Size = new Size(180, 22);
+            aboutToolStripMenuItem.Size = new Size(107, 22);
             aboutToolStripMenuItem.Text = "About";
             aboutToolStripMenuItem.Click += aboutToolStripMenuItem_Click;
             // 
@@ -118,20 +122,43 @@
             killBtn.UseVisualStyleBackColor = true;
             killBtn.Click += killBtn_Click;
             // 
-            // listView1
+            // ProcList
             // 
-            listView1.Location = new Point(0, 27);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(652, 465);
-            listView1.TabIndex = 3;
-            listView1.UseCompatibleStateImageBehavior = false;
+            ProcList.Columns.AddRange(new ColumnHeader[] { ProcName, PID, Mem, Threads });
+            ProcList.FullRowSelect = true;
+            ProcList.GridLines = true;
+            ProcList.Location = new Point(0, 27);
+            ProcList.Name = "ProcList";
+            ProcList.Size = new Size(652, 465);
+            ProcList.TabIndex = 3;
+            ProcList.UseCompatibleStateImageBehavior = false;
+            ProcList.View = View.Details;
+            // 
+            // ProcName
+            // 
+            ProcName.Text = "Name";
+            ProcName.Width = 250;
+            // 
+            // PID
+            // 
+            PID.Text = "ID";
+            PID.Width = 70;
+            // 
+            // Mem
+            // 
+            Mem.Text = "Memory";
+            Mem.Width = 100;
+            // 
+            // Threads
+            // 
+            Threads.Text = "Threads";
             // 
             // sysman
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(652, 529);
-            Controls.Add(listView1);
+            Controls.Add(ProcList);
             Controls.Add(killBtn);
             Controls.Add(menuStrip1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
@@ -160,6 +187,10 @@
         private ToolStripMenuItem aboutToolStripMenuItem;
         private ToolStripMenuItem killProcessToolStripMenuItem;
         private Button killBtn;
-        private ListView listView1;
+        private ListView ProcList;
+        private ColumnHeader ProcName;
+        private ColumnHeader PID;
+        private ColumnHeader Mem;
+        private ColumnHeader Threads;
     }
 }
