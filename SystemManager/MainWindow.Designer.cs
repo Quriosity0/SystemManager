@@ -45,6 +45,7 @@
             PID = new ColumnHeader();
             Mem = new ColumnHeader();
             Threads = new ColumnHeader();
+            cpuLabel = new Label();
             contextMenuStrip1.SuspendLayout();
             menuStrip1.SuspendLayout();
             SuspendLayout();
@@ -141,7 +142,7 @@
             // 
             // PID
             // 
-            PID.Text = "ID";
+            PID.Text = "PID";
             PID.Width = 70;
             // 
             // Mem
@@ -153,11 +154,21 @@
             // 
             Threads.Text = "Threads";
             // 
+            // cpuLabel
+            // 
+            cpuLabel.AutoSize = true;
+            cpuLabel.Location = new Point(12, 506);
+            cpuLabel.Name = "cpuLabel";
+            cpuLabel.Size = new Size(61, 15);
+            cpuLabel.TabIndex = 4;
+            cpuLabel.Text = "CPU: 0.0%";
+            // 
             // sysman
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(652, 529);
+            Controls.Add(cpuLabel);
             Controls.Add(ProcList);
             Controls.Add(killBtn);
             Controls.Add(menuStrip1);
@@ -192,5 +203,6 @@
         private ColumnHeader PID;
         private ColumnHeader Mem;
         private ColumnHeader Threads;
+        private Label cpuLabel;
     }
 }
