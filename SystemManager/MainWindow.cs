@@ -4,6 +4,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using SystemManager;
 
 namespace CSharpFinalProject
 {
@@ -121,7 +122,8 @@ namespace CSharpFinalProject
         }
         private void propertiesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            PropsWindow window = new PropsWindow { };
+            window.Show();
         }
         private void listView1_ColumnClick(object sender, ColumnClickEventArgs e)
         {
