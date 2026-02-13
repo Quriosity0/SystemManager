@@ -76,11 +76,10 @@ namespace CSharpFinalProject
             while (true)
             {
                 float cpuUsage = cpuCounter.NextValue();
-                cpuLabel.Text = $"CPU: {cpuUsage:F2}%";
+                cpuLabel.Text = $"CPU: {cpuUsage:F1}%";
                 await Task.Delay(1000);
             }
         }
-
         private void sysman_Load(object sender, EventArgs e)
         {
             UpdateTimer.Interval = 1000;

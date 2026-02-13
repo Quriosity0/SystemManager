@@ -56,12 +56,12 @@
             // 
             contextMenu.Items.AddRange(new ToolStripItem[] { killProcessToolStripMenuItem });
             contextMenu.Name = "contextMenuStrip1";
-            contextMenu.Size = new Size(181, 48);
+            contextMenu.Size = new Size(134, 26);
             // 
             // killProcessToolStripMenuItem
             // 
             killProcessToolStripMenuItem.Name = "killProcessToolStripMenuItem";
-            killProcessToolStripMenuItem.Size = new Size(180, 22);
+            killProcessToolStripMenuItem.Size = new Size(133, 22);
             killProcessToolStripMenuItem.Text = "Kill process";
             killProcessToolStripMenuItem.Click += killProcessToolStripMenuItem_Click;
             // 
@@ -129,6 +129,7 @@
             // ProcList
             // 
             ProcList.Columns.AddRange(new ColumnHeader[] { ProcName, PID, CPU, Mem, Threads });
+            ProcList.ContextMenuStrip = contextMenu;
             ProcList.FullRowSelect = true;
             ProcList.GridLines = true;
             ProcList.Location = new Point(0, 27);
