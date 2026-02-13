@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SysMan));
             contextMenu = new ContextMenuStrip(components);
             killProcessToolStripMenuItem = new ToolStripMenuItem();
+            propertiesToolStripMenuItem = new ToolStripMenuItem();
             TopMenu = new MenuStrip();
             fileToolStripMenuItem = new ToolStripMenuItem();
             runToolStripMenuItem = new ToolStripMenuItem();
@@ -54,9 +55,9 @@
             // 
             // contextMenu
             // 
-            contextMenu.Items.AddRange(new ToolStripItem[] { killProcessToolStripMenuItem });
+            contextMenu.Items.AddRange(new ToolStripItem[] { killProcessToolStripMenuItem, propertiesToolStripMenuItem });
             contextMenu.Name = "contextMenuStrip1";
-            contextMenu.Size = new Size(134, 26);
+            contextMenu.Size = new Size(134, 48);
             // 
             // killProcessToolStripMenuItem
             // 
@@ -64,6 +65,13 @@
             killProcessToolStripMenuItem.Size = new Size(133, 22);
             killProcessToolStripMenuItem.Text = "Kill process";
             killProcessToolStripMenuItem.Click += killProcessToolStripMenuItem_Click;
+            // 
+            // propertiesToolStripMenuItem
+            // 
+            propertiesToolStripMenuItem.Name = "propertiesToolStripMenuItem";
+            propertiesToolStripMenuItem.Size = new Size(133, 22);
+            propertiesToolStripMenuItem.Text = "Properties";
+            propertiesToolStripMenuItem.Click += propertiesToolStripMenuItem_Click;
             // 
             // TopMenu
             // 
@@ -118,6 +126,7 @@
             // 
             // killBtn
             // 
+            killBtn.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             killBtn.Location = new Point(569, 498);
             killBtn.Name = "killBtn";
             killBtn.Size = new Size(75, 23);
@@ -128,6 +137,7 @@
             // 
             // ProcList
             // 
+            ProcList.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             ProcList.Columns.AddRange(new ColumnHeader[] { ProcName, PID, CPU, Mem, Threads });
             ProcList.ContextMenuStrip = contextMenu;
             ProcList.FullRowSelect = true;
@@ -164,6 +174,7 @@
             // 
             // cpuLabel
             // 
+            cpuLabel.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             cpuLabel.AutoSize = true;
             cpuLabel.Location = new Point(12, 506);
             cpuLabel.Name = "cpuLabel";
@@ -212,5 +223,6 @@
         private Label cpuLabel;
         private System.Windows.Forms.Timer UpdateTimer;
         private ColumnHeader CPU;
+        private ToolStripMenuItem propertiesToolStripMenuItem;
     }
 }

@@ -66,7 +66,7 @@ namespace CSharpFinalProject
 
             UpdateList();
         }
-        private async void MeasureSystemLoad() 
+        private async void MeasureSystemLoad()
         {
             var cpuCounter = new PerformanceCounter("Processor", "% Processor Time", "_Total");
 
@@ -118,6 +118,10 @@ namespace CSharpFinalProject
         private void killProcessToolStripMenuItem_Click(object sender, EventArgs e)
         {
             KillSelectedProcess();
+        }
+        private void propertiesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
         private void listView1_ColumnClick(object sender, ColumnClickEventArgs e)
         {
