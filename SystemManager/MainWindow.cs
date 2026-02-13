@@ -25,7 +25,7 @@ namespace CSharpFinalProject
                 {
                     ActiveProcesses.Add(p.Id);
 
-                    if(ProcessList.TryGetValue(p.Id, out var item))
+                    if (ProcessList.TryGetValue(p.Id, out var item))
                     {
                         item.SubItems[3].Text = $"{p.WorkingSet64 / 1024 / 1024} MB";
                         item.SubItems[4].Text = p.Threads.Count.ToString();
@@ -57,13 +57,37 @@ namespace CSharpFinalProject
 
             ProcList.EndUpdate();
         }
+        private void KillSelectedProcess()
+        {
+            if (ProcList.SelectedItems.Count == 0) return;
+
+            int pid = (int)ProcList.SelectedItems[0].Tag;
+            Process.GetProcessById(pid).Kill();
+
+            UpdateList();
+        }
+        private async void MeasureSystemLoad() 
+        {
+            var cpuCounter = new PerformanceCounter("Processor", "% Processor Time", "_Total");
+
+            cpuCounter.NextValue();
+            await Task.Delay(500);
+
+            while (true)
+            {
+                float cpuUsage = cpuCounter.NextValue();
+                cpuLabel.Text = $"CPU: {cpuUsage:F2}%";
+                await Task.Delay(1000);
+            }
+        }
+
         private void sysman_Load(object sender, EventArgs e)
         {
             UpdateTimer.Interval = 1000;
             UpdateTimer.Tick += (s, e) =>
             {
                 UpdateList();
-                //SystemLoad();
+                MeasureSystemLoad();
             };
             UpdateTimer.Start();
         }
@@ -90,7 +114,11 @@ namespace CSharpFinalProject
 
         private void killBtn_Click(object sender, EventArgs e)
         {
-
+            KillSelectedProcess();
+        }
+        private void killProcessToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            KillSelectedProcess();
         }
         private void listView1_ColumnClick(object sender, ColumnClickEventArgs e)
         {

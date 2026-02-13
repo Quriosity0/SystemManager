@@ -56,13 +56,14 @@
             // 
             contextMenu.Items.AddRange(new ToolStripItem[] { killProcessToolStripMenuItem });
             contextMenu.Name = "contextMenuStrip1";
-            contextMenu.Size = new Size(134, 26);
+            contextMenu.Size = new Size(181, 48);
             // 
             // killProcessToolStripMenuItem
             // 
             killProcessToolStripMenuItem.Name = "killProcessToolStripMenuItem";
-            killProcessToolStripMenuItem.Size = new Size(133, 22);
+            killProcessToolStripMenuItem.Size = new Size(180, 22);
             killProcessToolStripMenuItem.Text = "Kill process";
+            killProcessToolStripMenuItem.Click += killProcessToolStripMenuItem_Click;
             // 
             // TopMenu
             // 
