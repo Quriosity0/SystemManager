@@ -14,6 +14,7 @@ namespace CSharpFinalProject
     public partial class ProcKill : Form
     {
         string procName;
+        SysMan obj = new SysMan();
 
         public ProcKill()
         {
@@ -22,7 +23,6 @@ namespace CSharpFinalProject
 
         private void ProcKill_Load(object sender, EventArgs e)
         {
-
         }
 
         private void CancelBtn_Click(object sender, EventArgs e)
@@ -41,6 +41,7 @@ namespace CSharpFinalProject
                 p.Kill();
                 p.WaitForExit();
             }
+            obj.UpdateList();
             Close();
         }
     }

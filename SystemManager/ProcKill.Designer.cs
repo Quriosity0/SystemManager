@@ -108,7 +108,7 @@
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "ProcKill";
-            Text = "ProcKill";
+            Text = "Kill";
             Load += ProcKill_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);

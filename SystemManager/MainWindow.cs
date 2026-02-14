@@ -15,7 +15,7 @@ namespace CSharpFinalProject
         {
             InitializeComponent();
         }
-        private void UpdateList()
+        public void UpdateList()
         {
             Process[] processes = Process.GetProcesses();
             HashSet<int> ActiveProcesses = new HashSet<int>();

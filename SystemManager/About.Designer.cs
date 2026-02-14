@@ -86,9 +86,9 @@
             label3.Font = new Font("Yu Gothic UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label3.Location = new Point(91, 37);
             label3.Name = "label3";
-            label3.Size = new Size(151, 15);
+            label3.Size = new Size(72, 15);
             label3.TabIndex = 4;
-            label3.Text = "Version 1.0.0 (Initial release)";
+            label3.Text = "Version 1.0.1";
             // 
             // label4
             // 
