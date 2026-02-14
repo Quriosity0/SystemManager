@@ -32,7 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SysMan));
             contextMenu = new ContextMenuStrip(components);
             killProcessToolStripMenuItem = new ToolStripMenuItem();
-            propertiesToolStripMenuItem = new ToolStripMenuItem();
+            openFileLocationToolStripMenuItem = new ToolStripMenuItem();
             TopMenu = new MenuStrip();
             fileToolStripMenuItem = new ToolStripMenuItem();
             runToolStripMenuItem = new ToolStripMenuItem();
@@ -55,23 +55,23 @@
             // 
             // contextMenu
             // 
-            contextMenu.Items.AddRange(new ToolStripItem[] { killProcessToolStripMenuItem, propertiesToolStripMenuItem });
+            contextMenu.Items.AddRange(new ToolStripItem[] { killProcessToolStripMenuItem, openFileLocationToolStripMenuItem });
             contextMenu.Name = "contextMenuStrip1";
-            contextMenu.Size = new Size(134, 48);
+            contextMenu.Size = new Size(169, 48);
             // 
             // killProcessToolStripMenuItem
             // 
             killProcessToolStripMenuItem.Name = "killProcessToolStripMenuItem";
-            killProcessToolStripMenuItem.Size = new Size(133, 22);
+            killProcessToolStripMenuItem.Size = new Size(168, 22);
             killProcessToolStripMenuItem.Text = "Kill process";
             killProcessToolStripMenuItem.Click += killProcessToolStripMenuItem_Click;
             // 
-            // propertiesToolStripMenuItem
+            // openFileLocationToolStripMenuItem
             // 
-            propertiesToolStripMenuItem.Name = "propertiesToolStripMenuItem";
-            propertiesToolStripMenuItem.Size = new Size(133, 22);
-            propertiesToolStripMenuItem.Text = "Properties";
-            propertiesToolStripMenuItem.Click += propertiesToolStripMenuItem_Click;
+            openFileLocationToolStripMenuItem.Name = "openFileLocationToolStripMenuItem";
+            openFileLocationToolStripMenuItem.Size = new Size(168, 22);
+            openFileLocationToolStripMenuItem.Text = "Open file location";
+            openFileLocationToolStripMenuItem.Click += openFileLocationToolStripMenuItem_Click;
             // 
             // TopMenu
             // 
@@ -223,6 +223,6 @@
         private Label cpuLabel;
         private System.Windows.Forms.Timer UpdateTimer;
         private ColumnHeader CPU;
-        private ToolStripMenuItem propertiesToolStripMenuItem;
+        private ToolStripMenuItem openFileLocationToolStripMenuItem;
     }
 }

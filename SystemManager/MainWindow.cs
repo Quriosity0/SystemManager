@@ -81,6 +81,20 @@ namespace CSharpFinalProject
                 await Task.Delay(1000);
             }
         }
+        private void OpenFileLocation()
+        {
+            if (ProcList.SelectedItems.Count == 0) return;
+
+            try
+            {
+                int pid = (int)ProcList.SelectedItems[0].Tag;
+
+                Process pr = Process.GetProcessById(pid);
+                string path = pr.MainModule.FileName;
+                Process.Start("explorer.exe", $"/select,\"{path}\"");
+            }
+            catch { }
+        }
         private void sysman_Load(object sender, EventArgs e)
         {
             UpdateTimer.Interval = 1000;
@@ -120,10 +134,9 @@ namespace CSharpFinalProject
         {
             KillSelectedProcess();
         }
-        private void propertiesToolStripMenuItem_Click(object sender, EventArgs e)
+        private void openFileLocationToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            PropsWindow window = new PropsWindow { };
-            window.Show();
+            OpenFileLocation();
         }
         private void listView1_ColumnClick(object sender, ColumnClickEventArgs e)
         {
