@@ -17,6 +17,7 @@
     - display of all processes
     - Kill and run processes
     - Open file location
+    - RAM Measurement for each individual process
 - [ ] CPU Measurement for each individual process
 - [ ] Overall RAM measurement
 - [ ] Process properties window
