@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 using System.Diagnostics;
-using System.Reflection;
-using System.Runtime.InteropServices;
+using System.IO;
 
 namespace CSharpFinalProject
 {
@@ -36,13 +30,26 @@ namespace CSharpFinalProject
 
             Process[] processes = Process.GetProcessesByName(procName);
 
+            // Terminate all processes with the specified name,
+            // wait for each process to exit, update the process list, and close the form
             foreach (Process p in processes)
             {
-                p.Kill();
-                p.WaitForExit();
+                try
+                {
+                    p.Kill();
+                    p.WaitForExit();
+                }
+                // Some system processes may throw Access Denied or have exited 
+                catch (Exception ex)
+                {
+                    using (StreamWriter writer = new StreamWriter("log.txt", true))
+                    {
+                        writer.WriteLine($"[{DateTime.Now}] Program threw an exception: {ex} (Access Denied or process already exited)");
+                    }
+                }
+                obj.UpdateList();
+                Close();
             }
-            obj.UpdateList();
-            Close();
         }
     }
 }

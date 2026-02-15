@@ -18,6 +18,7 @@ namespace CSharpFinalProject
 
         private void GHLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            // Open the GitHub repository in the default web browser
             Process.Start(new ProcessStartInfo
             {
                 FileName = "https://github.com/Quriosity0/SystemManager",

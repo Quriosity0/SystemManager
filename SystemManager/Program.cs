@@ -2,9 +2,7 @@ namespace CSharpFinalProject
 {
     internal static class Program
     {
-        /// <summary>
-        ///  The main entry point for the application.
-        /// </summary>
+        // Application entry point
         [STAThread]
         static void Main()
         {
