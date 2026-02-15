@@ -1,10 +1,8 @@
 # **System Manager by quriosity**
 
 <br>
-
 > [!NOTE]\
 > Initial release is only a proof of concept and is not suitable for use in a normal working environment
-
 <br>
 
 ### System Manager is a tool that allows you to manage your system in a more efficient way
