@@ -98,30 +98,8 @@ namespace CSharpFinalProject
         private string MeasureProcessLoad(int pid)
         {
             var proc = Process.GetProcessById(pid);
-            var cpuCounter = new PerformanceCounter("Processor", "% Processor Time", proc.ProcessName);
 
-            try
-            {
-                // The first call to NextValue() always returns 0, so we call it once and wait before starting the loop
-                cpuCounter.NextValue();
-                Task.Run(() => Thread.Sleep(500));
-
-                float cpuUsage = cpuCounter.NextValue();
-                using (StreamWriter writer = new StreamWriter("log.txt", true))
-                {
-                    writer.WriteLine($"Processor load by process {proc.ProcessName}: {cpuUsage:F1}%");
-                }
-                return $"{cpuUsage:F1}%";
-            }
-            catch (Exception)
-            {
-                // Some system processes may throw Access Denied or have exited
-                using (StreamWriter writer = new StreamWriter("log.txt", true))
-                {
-                    writer.WriteLine($"[{DateTime.Now}] Program threw an exception (Access Denied or process already exited)");
-                }
-                return "N/A";
-            }
+            return "Not finished";
         }
         // Asynchronously measures CPU usage using PerformanceCounter and updates the label every second
         private async void MeasureSystemLoad()
