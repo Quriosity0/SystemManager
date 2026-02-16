@@ -37,6 +37,7 @@ namespace CSharpFinalProject
                     // If the process is already in the list, update it instead of creating a new item
                     if (ProcessList.TryGetValue(p.Id, out var item))
                     {
+                        item.SubItems[2].Text = $"{MeasureProcessLoad(p.Id)}";
                         item.SubItems[3].Text = $"{p.WorkingSet64 / 1024 / 1024} MB";
                         item.SubItems[4].Text = p.Threads.Count.ToString();
                     }
@@ -94,20 +95,32 @@ namespace CSharpFinalProject
             UpdateList();
         }
         // Measures CPU load for a specific process in C#
-        private async void MeasureProcessLoad(int pid)
+        private string MeasureProcessLoad(int pid)
         {
-            var process = Process.GetProcessById(pid);
-            string ProcName = process.ProcessName;
-            var PerfCounter = new PerformanceCounter("Processor", "% Processor Time");
+            var proc = Process.GetProcessById(pid);
+            var cpuCounter = new PerformanceCounter("Processor", "% Processor Time", proc.ProcessName);
 
-            PerfCounter.NextValue();
-            await Task.Delay(500);
-
-            while (true)
+            try
             {
-                float cpuUsage = PerfCounter.NextValue();
-                cpuLabel.Text = $"CPU: {cpuUsage:F1}%";
-                await Task.Delay(1000);
+                // The first call to NextValue() always returns 0, so we call it once and wait before starting the loop
+                cpuCounter.NextValue();
+                Task.Run(() => Thread.Sleep(500));
+
+                float cpuUsage = cpuCounter.NextValue();
+                using (StreamWriter writer = new StreamWriter("log.txt", true))
+                {
+                    writer.WriteLine($"Processor load by process {proc.ProcessName}: {cpuUsage:F1}%");
+                }
+                return $"{cpuUsage:F1}%";
+            }
+            catch (Exception)
+            {
+                // Some system processes may throw Access Denied or have exited
+                using (StreamWriter writer = new StreamWriter("log.txt", true))
+                {
+                    writer.WriteLine($"[{DateTime.Now}] Program threw an exception (Access Denied or process already exited)");
+                }
+                return "N/A";
             }
         }
         // Asynchronously measures CPU usage using PerformanceCounter and updates the label every second
