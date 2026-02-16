@@ -31,6 +31,8 @@ namespace CSharpFinalProject
             {
                 try
                 {
+                    ActiveProcesses.Add(p.Id);
+
                     // If the process is already in the list, update it instead of creating a new item
                     if (ProcessList.TryGetValue(p.Id, out var item))
                     {
