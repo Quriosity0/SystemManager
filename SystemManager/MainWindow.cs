@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using SystemManager;
+using Windows.Foundation;
 
 namespace CSharpFinalProject
 {
@@ -91,6 +92,23 @@ namespace CSharpFinalProject
             }
 
             UpdateList();
+        }
+        // Measures CPU load for a specific process in C#
+        private async void MeasureProcessLoad(int pid)
+        {
+            var process = Process.GetProcessById(pid);
+            string ProcName = process.ProcessName;
+            var PerfCounter = new PerformanceCounter("Processor", "% Processor Time");
+
+            PerfCounter.NextValue();
+            await Task.Delay(500);
+
+            while (true)
+            {
+                float cpuUsage = PerfCounter.NextValue();
+                cpuLabel.Text = $"CPU: {cpuUsage:F1}%";
+                await Task.Delay(1000);
+            }
         }
         // Asynchronously measures CPU usage using PerformanceCounter and updates the label every second
         private async void MeasureSystemLoad()
