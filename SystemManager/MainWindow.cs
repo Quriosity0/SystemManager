@@ -31,8 +31,6 @@ namespace CSharpFinalProject
             {
                 try
                 {
-                    
-
                     // If the process is already in the list, update it instead of creating a new item
                     if (ProcessList.TryGetValue(p.Id, out var item))
                     {
@@ -93,7 +91,6 @@ namespace CSharpFinalProject
 
             UpdateList();
         }
-        
         // Asynchronously measures CPU usage using PerformanceCounter and updates the label every second
         private async void MeasureSystemLoad()
         {
@@ -111,7 +108,7 @@ namespace CSharpFinalProject
                 float cpuUsage = cpuCounter.NextValue();
                 float memUsage = MemCounter.NextValue();
                 cpuLabel.Text = $"CPU: {cpuUsage:F1}%";
-                MemLabel.Text = $"Memory: {memUsage} GB/{AllMem.TotalPhysicalMemory}";
+                MemLabel.Text = $"Memory: {memUsage / 1024:F1} GB/{AllMem.TotalPhysicalMemory / 1024 / 1024 / 1024 + 1} GB";
                 await Task.Delay(1000);
             }
         }
