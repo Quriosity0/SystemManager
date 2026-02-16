@@ -21,6 +21,7 @@
 - [ ] CPU Measurement for each individual process
 - [ ] Overall RAM measurement
 - [ ] Process properties window
+- [ ] Separate logic from UI
 
 ## Building:
 
