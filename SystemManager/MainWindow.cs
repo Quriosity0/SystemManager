@@ -3,9 +3,8 @@ using System.Diagnostics;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using SystemManager;
-using Windows.Foundation;
+using Microsoft.VisualBasic.Devices;
+using Windows.System.Diagnostics;
 
 namespace CSharpFinalProject
 {
@@ -32,12 +31,12 @@ namespace CSharpFinalProject
             {
                 try
                 {
-                    ActiveProcesses.Add(p.Id);
+                    
 
                     // If the process is already in the list, update it instead of creating a new item
                     if (ProcessList.TryGetValue(p.Id, out var item))
                     {
-                        item.SubItems[2].Text = $"{MeasureProcessLoad(p.Id)}";
+                        item.SubItems[2].Text = $"";
                         item.SubItems[3].Text = $"{p.WorkingSet64 / 1024 / 1024} MB";
                         item.SubItems[4].Text = p.Threads.Count.ToString();
                     }
@@ -94,26 +93,25 @@ namespace CSharpFinalProject
 
             UpdateList();
         }
-        // Measures CPU load for a specific process in C#
-        private string MeasureProcessLoad(int pid)
-        {
-            var proc = Process.GetProcessById(pid);
-
-            return "Not finished";
-        }
+        
         // Asynchronously measures CPU usage using PerformanceCounter and updates the label every second
         private async void MeasureSystemLoad()
         {
             var cpuCounter = new PerformanceCounter("Processor", "% Processor Time", "_Total");
+            var MemCounter = new PerformanceCounter("Memory", "Available MBytes");
+            var AllMem = new ComputerInfo();
 
             // The first call to NextValue() always returns 0, so we call it once and wait before starting the loop
             cpuCounter.NextValue();
+            MemCounter.NextValue();
             await Task.Delay(500);
 
             while (true)
             {
                 float cpuUsage = cpuCounter.NextValue();
+                float memUsage = MemCounter.NextValue();
                 cpuLabel.Text = $"CPU: {cpuUsage:F1}%";
+                MemLabel.Text = $"Memory: {memUsage} GB/{AllMem.TotalPhysicalMemory}";
                 await Task.Delay(1000);
             }
         }
