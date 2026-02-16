@@ -108,7 +108,7 @@ namespace CSharpFinalProject
                 float cpuUsage = cpuCounter.NextValue();
                 float memUsage = MemCounter.NextValue();
                 cpuLabel.Text = $"CPU: {cpuUsage:F1}%";
-                MemLabel.Text = $"Memory: {memUsage / 1024:F1} GB/{AllMem.TotalPhysicalMemory / 1024 / 1024 / 1024 + 1} GB";
+                MemLabel.Text = $"Memory: {(AllMem.TotalPhysicalMemory / 1024 / 1024 / 1024 + 1) - (memUsage / 1024):F1} GB/{AllMem.TotalPhysicalMemory / 1024 / 1024 / 1024 + 1} GB";
                 await Task.Delay(1000);
             }
         }
