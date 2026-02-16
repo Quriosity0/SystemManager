@@ -27,7 +27,7 @@
 
 1. Dependencies:
     - Windows 10
-    - [.NET 10 SDK for Windows](https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/sdk-10.0.103-windows-x64-installer)
+    - [.NET 10.0.3 SDK for Windows](https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/sdk-10.0.103-windows-x64-installer)
     - [MS Visual Studio 2026](https://aka.ms/vs/18/release/vs_community.exe)
 2. Building:
     - Clone the repository
