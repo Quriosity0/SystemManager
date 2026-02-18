@@ -1,4 +1,4 @@
-# **System Manager by quriosity**
+# **System Manager**
 
 <br>
 
