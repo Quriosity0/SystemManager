@@ -1,10 +1,8 @@
 using System;
 using System.Diagnostics;
-using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using SystemManager;
+using Microsoft.VisualBasic.Devices;
 
 namespace CSharpFinalProject
 {
@@ -36,6 +34,7 @@ namespace CSharpFinalProject
                     // If the process is already in the list, update it instead of creating a new item
                     if (ProcessList.TryGetValue(p.Id, out var item))
                     {
+                        item.SubItems[2].Text = $"";
                         item.SubItems[3].Text = $"{p.WorkingSet64 / 1024 / 1024} MB";
                         item.SubItems[4].Text = p.Threads.Count.ToString();
                     }
@@ -96,15 +95,20 @@ namespace CSharpFinalProject
         private async void MeasureSystemLoad()
         {
             var cpuCounter = new PerformanceCounter("Processor", "% Processor Time", "_Total");
+            var MemCounter = new PerformanceCounter("Memory", "Available MBytes");
+            var AllMem = new ComputerInfo();
 
             // The first call to NextValue() always returns 0, so we call it once and wait before starting the loop
             cpuCounter.NextValue();
+            MemCounter.NextValue();
             await Task.Delay(500);
 
             while (true)
             {
                 float cpuUsage = cpuCounter.NextValue();
+                float memUsage = MemCounter.NextValue();
                 cpuLabel.Text = $"CPU: {cpuUsage:F1}%";
+                MemLabel.Text = $"Memory: {(AllMem.TotalPhysicalMemory / 1024 / 1024 / 1024 + 1) - (memUsage / 1024):F1} GB/{AllMem.TotalPhysicalMemory / 1024 / 1024 / 1024 + 1} GB";
                 await Task.Delay(1000);
             }
         }

@@ -49,6 +49,7 @@
             Threads = new ColumnHeader();
             cpuLabel = new Label();
             UpdateTimer = new System.Windows.Forms.Timer(components);
+            MemLabel = new Label();
             contextMenu.SuspendLayout();
             TopMenu.SuspendLayout();
             SuspendLayout();
@@ -182,11 +183,22 @@
             cpuLabel.TabIndex = 4;
             cpuLabel.Text = "CPU: 0.0%";
             // 
+            // MemLabel
+            // 
+            MemLabel.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            MemLabel.AutoSize = true;
+            MemLabel.Location = new Point(91, 506);
+            MemLabel.Name = "MemLabel";
+            MemLabel.Size = new Size(111, 15);
+            MemLabel.TabIndex = 5;
+            MemLabel.Text = "Memory: 0 GB/0 GB";
+            // 
             // SysMan
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(652, 529);
+            Controls.Add(MemLabel);
             Controls.Add(cpuLabel);
             Controls.Add(ProcList);
             Controls.Add(killBtn);
@@ -224,5 +236,6 @@
         private System.Windows.Forms.Timer UpdateTimer;
         private ColumnHeader CPU;
         private ToolStripMenuItem openFileLocationToolStripMenuItem;
+        private Label MemLabel;
     }
 }
